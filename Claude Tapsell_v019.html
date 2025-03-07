@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقایسه سود سرمایه‌گذاری طلا</title>
+    <style>
+@font-face {
+    font-family: 'ModamFaNum';
+    src: url('font/ModamFaNum.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ModamFaNum';
+    src: url('font/ModamFaNumLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ModamFaNum';
+    src: url('font/ModamFaNumExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ModamFaNum', Arial, sans-serif;
+}
+        
+        body {
+            background-color: #faf9f6;
+            color: #333;
+            direction: rtl;
+        }
+        
+/* New styles for the header structure */
+.header-band {
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+    padding: 12px 0; /* Remove horizontal padding */
+}
+
+.header-content {
+    max-width: 540px; /* Same as your container */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Add padding inside the wrapper if needed */
+}
+        
+        .logo {
+            height: 32px;
+        }
+        
+.tagline {
+    display: flex;
+    align-items: center;
+}
+
+.tagline-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.gold-highlight {
+    background-color: #FFE066;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.star-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    transform: translate(20%, 00%);
+}
+
+/* For responsive design similar to the provided code */
+@media (max-width: 768px) {
+    .close-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+        
+        .container {
+            max-width: 540px;
+            margin: 10px auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .calculator-card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 20px 20px;
+            color: #333;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+        }
+        
+        .input-section h2 {
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: normal;
+            text-align: right;
+        }
+        
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #f2f2f2;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        
+        .input-container button {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid #555;
+            background-color: transparent;
+            color: #555;
+            font-size: 21px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .input-value {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+.slider-container {
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+    height: 16px;
+    margin-bottom: 40px; /* Add this line to create space for labels */
+}
+
+.slider-track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    height: 7px; /* Keep original height */
+    background: #efeeec;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.slider-track-filled {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    height: 9px; /* Keep original height */
+    background: #FFE066;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px; /* Keep original height */
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    margin: 0;
+    z-index: 2;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: #efeeec;
+    border: 6px solid #FFE066;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    border: 6px solid #e0e0e0;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+        
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute; /* Position absolutely */
+    top: 30px; /* Adjust this value to control spacing */
+    left: 0;
+    right: 0;
+    color: #666;
+    font-size: 12px;
+}
+        
+.results-section {
+    margin-top: 65px;
+    padding-top: 10px;
+    border-top: 2px solid #d4d4d4;
+}
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-size: 14px;
+        }
+        
+        .result-value {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .result-number {
+    font-weight: bold;
+}
+
+.result-unit {
+    font-weight: normal;
+}
+        .cta-button {
+    background-color: #FFD84D;
+    color: #333;
+    font-family: 'ModamFaNum', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: block;
+    width: 80%;
+    max-width: 350px;
+    margin: 15px auto;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #FFE066;
+}
+    </style>
+</head>
+<body>
+<div class="header-band">
+    <div class="header-content">
+        <img class="logo" src= "library/logo.svg")>
+<div class="tagline">
+    <span class="tagline-text">کــم کــم</span>
+    <span class="gold-highlight">طلـــــــا
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="star-icon">
+            <path d="M1.36968 18.4623C0.75555 18.7348 0.191699 17.9953 0.617095 17.4752L6.40851 10.3952C6.56094 10.2088 6.59549 9.95256 6.49785 9.73249L2.78796 1.37163C2.51546 0.757503 3.25501 0.193652 3.77506 0.619048L10.8551 6.41046C11.0414 6.5629 11.2977 6.59745 11.5178 6.4998L19.8787 2.78991C20.4928 2.51741 21.0566 3.25697 20.6312 3.77702L14.8398 10.857C14.6874 11.0434 14.6528 11.2997 14.7505 11.5197L18.4604 19.8806C18.7329 20.4947 17.9933 21.0586 17.4733 20.6332L10.3932 14.8418C10.2069 14.6893 9.9506 14.6548 9.73054 14.7524L1.36968 18.4623Z" fill="#10100F"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.73054 14.7524C9.9506 14.6548 10.2069 14.6893 10.3932 14.8418L17.4733 20.6332C17.9933 21.0586 18.7329 20.4947 18.4604 19.8806L14.7505 11.5197C14.6528 11.2997 14.6874 11.0434 14.8398 10.857L20.6312 3.77702C21.0566 3.25697 20.4928 2.51741 19.8787 2.78991L11.5178 6.4998C11.2977 6.59745 11.0414 6.5629 10.8551 6.41046L3.77506 0.619048C3.25501 0.193652 2.51546 0.757503 2.78796 1.37163L6.49785 9.73249C6.59549 9.95256 6.56094 10.2088 6.40851 10.3952L0.617095 17.4752C0.191699 17.9953 0.75555 18.7348 1.36968 18.4623L9.73054 14.7524ZM10.4942 10.7252C10.5708 10.7336 10.6472 10.7439 10.7232 10.756C10.7316 10.6795 10.7419 10.6031 10.7541 10.5271C10.6775 10.5187 10.6012 10.5084 10.5251 10.4962C10.5167 10.5728 10.5064 10.6491 10.4942 10.7252Z" fill="#10100F"></path>
+        </svg>
+    </span>
+    <span class="tagline-text">پس‌انداز کن</span>
+</div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>مقایسه سود سرمایه‌گذاری طلا</h1>
+            <p>با وارد کردن مبلغ سرمایه‌تان، سود سرمایه‌گذاری در طلا را با سایر روش‌های رایج در<BR> بازه ۵ ساله مقایسه کنید.</p>
+        </div>
+        
+        <div class="calculator-card">
+            <div class="input-section">
+                <h2>مبلغ سرمایه‌گذاری</h2>
+                <div class="input-container">
+                    <button id="decrease-btn">-</button>
+                    <div class="input-value" id="investment-value">۱ میلیون تومان</div>
+                    <button id="increase-btn">+</button>
+                </div>
+<div class="slider-container">
+    <div class="slider-track"></div>
+    <div class="slider-track-filled" id="slider-fill"></div>
+    <input type="range" min="1" max="100" value="01" class="slider" id="investment-slider">
+    <div class="slider-labels">
+        <div>یک میلیون تومان</div>
+        <div>۱۰۰ میلیون تومان</div>
+    </div>
+</div>
+            </div>
+            
+            <div class="results-section" id="results">
+                <!-- Results will be generated by JavaScript -->
+            </div>
+        </div>
+        <a href="https://talasea.ir/login" class="cta-button">شروع سرمایه‌گذاری</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const investmentValue = document.getElementById('investment-value');
+            const investmentSlider = document.getElementById('investment-slider');
+            const decreaseBtn = document.getElementById('decrease-btn');
+            const increaseBtn = document.getElementById('increase-btn');
+            const resultsSection = document.getElementById('results');
+            const sliderFill = document.getElementById('slider-fill');
+            
+            // Investment options data
+            const investmentOptions = [
+                { id: 'gold', name: 'سود سرمایه گذاری طلا', multiplier: 10.61 },
+                { id: 'house', name: 'مسکن', multiplier: 7.28 },
+                { id: 'dollar', name: 'دلار', multiplier: 6.1 },
+                { id: 'bank', name: 'سود سپرده بانکی', multiplier: 1.48}
+            ];
+            
+            let currentValue = 01;
+            
+            // Format number to Persian
+            function formatToPersian(num) {
+                const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+                return num.toString().replace(/\d/g, x => persianDigits[x]);
+            }
+            
+            // Create results items
+            function createResultItems() {
+                resultsSection.innerHTML = '';
+                
+                investmentOptions.forEach(option => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    
+                    const label = document.createElement('div');
+                    label.className = 'result-label';
+                    label.textContent = option.name;
+                    
+                    const value = document.createElement('div');
+                    value.className = 'result-value';
+                    value.id = `value-${option.id}`;
+                    
+                    resultItem.appendChild(label);
+                    resultItem.appendChild(value);
+                    resultsSection.appendChild(resultItem);
+                });
+            }
+            
+            // Update slider fill
+            function updateSliderFill() {
+                const percentage = ((currentValue - 1) / 99) * 100;
+                sliderFill.style.width = percentage + '%';
+            }
+            
+            // Update results based on current value
+            function updateResults() {
+                investmentOptions.forEach(option => {
+                    const resultValue = currentValue * option.multiplier;
+                    const valueDisplay = document.getElementById(`value-${option.id}`);
+        valueDisplay.innerHTML = `<span class="result-number">${formatToPersian(resultValue.toFixed(2))}</span> <span class="result-unit">میلیون تومان</span>`;
+    });
+}
+            
+            // Update displayed value
+            function updateDisplayedValue() {
+                investmentValue.textContent = formatToPersian(currentValue) + ' میلیون تومان';
+                investmentSlider.value = currentValue;
+                updateSliderFill();
+                updateResults();
+            }
+            
+            // Event for decrease button
+            decreaseBtn.addEventListener('click', function() {
+                if (currentValue > 1) {
+                    currentValue--;
+                    updateDisplayedValue();
+                }
+            });
+            
+            // Event for increase button
+            increaseBtn.addEventListener('click', function() {
+                if (currentValue < 100) {
+                    currentValue++;
+                    updateDisplayedValue();
+                }
+            });
+            
+            // Event for slider
+            investmentSlider.addEventListener('input', function() {
+                currentValue = parseInt(this.value);
+                updateDisplayedValue();
+            });
+            
+            // Initialize
+            createResultItems();
+            updateResults();
+            updateSliderFill();
+        });
+    </script>
+</body>
+</html>
